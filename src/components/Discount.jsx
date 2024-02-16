@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 export default function Discount() {
   return (
@@ -14,7 +14,7 @@ export default function Discount() {
                         <span className='text-sm font-semibold dark-text-[#000]'>DISCOUNT</span>
                         <h2 className='text-2xl font-400 font-[Lobster] dark:text-[#ca1515]'>Summer 2019</h2>
                         <span className='text-sm font-semibold dark:text-[#000]'>SALE</span>
-                        <span className='text-lg font-semibold dark:text-[#ca1515]'>50%</span>
+                        <span className='text-lg font-bold dark:text-[#ca1515]'>50%</span>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@ export default function Discount() {
                 </div>
             </div>
         </div>
-        <div className='justify-center text-[0.6rem] items-center mt-3 m-auto flex py-2 text-black font-bold lg:p-0 uppercase border-b-2 border-[ca1515] w-[3.5rem]'></div>
+        <div className='justify-center text-[0.6rem] items-center mt-3 m-auto flex py-2 text-black font-bold lg:p-0 uppercase border-b-2 border-[ca1515] w-[3.5rem]'>SHOP NOW</div>
         <div className='flex-1 flex-row w-full mt-4 justify-center mb-6 relative left-0'>
             <div className='mr-6 flex'></div>
             <div className='mr-6 flex'></div>
