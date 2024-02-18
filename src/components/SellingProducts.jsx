@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 export default function SellingProducts() {
   return (
@@ -15,10 +15,10 @@ export default function SellingProducts() {
       </h2>
     </div>
     
-    <div className='grid grid-cols-3 gap-8 flex-wrap p-3 w-full mt-8 justify-center mb-10 '>
+    <div className='grid grid-cols-3 gap-8 flex-wrap p-12 w-75% mx-12 justify-center my-'>
       
       <div className=' flex w-full h-full overflow-hidden ml-24 relative left-8'>
-         <div className='h-34 w-28 flex-shrink-0 overflow-hidden rounded-md'>
+         <div className='h-32 w-32 flex-shrink-0 overflow-hidden rounded-md'>
             <img src="https://slimages.macysassets.com/is/image/MCY/products/6/optimized/25944886_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." 
             className='object-cover object-center' />
           </div>
@@ -36,7 +36,7 @@ export default function SellingProducts() {
           </div>
        </div>
        <div className=' flex w-full h-full overflow-hidden ml-24 relative left-8'>
-         <div className='h-34 w-28 flex-shrink-0 overflow-hidden rounded-md'>
+         <div className='h-32 w-32 flex-shrink-0 overflow-hidden rounded-md'>
             <img src="https://slimages.macysassets.com/is/image/MCY/products/7/optimized/17524947_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." 
             className='object-cover object-center' />
           </div>
@@ -54,7 +54,7 @@ export default function SellingProducts() {
           </div>
        </div>
        <div className=' flex w-full h-full overflow-hidden ml-24 relative left-8'>
-         <div className='h-34 w-28 flex-shrink-0 overflow-hidden rounded-md'>
+         <div className='h-32 w-32 flex-shrink-0 overflow-hidden rounded-md'>
             <img src="https://slimages.macysassets.com/is/image/MCY/products/5/optimized/26497285_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." 
             className='object-cover object-center' />
           </div>
@@ -72,7 +72,7 @@ export default function SellingProducts() {
           </div>
        </div>
        <div className=' flex w-full h-full overflow-hidden ml-24 relative left-8'>
-         <div className='h-34 w-28 flex-shrink-0 overflow-hidden rounded-md'>
+         <div className='h-32 w-32 flex-shrink-0 overflow-hidden rounded-md'>
             <img src="https://slimages.macysassets.com/is/image/MCY/products/4/optimized/13838524_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." 
             className='object-cover object-center' />
           </div>
@@ -90,7 +90,7 @@ export default function SellingProducts() {
           </div>
        </div>
        <div className=' flex w-full h-full overflow-hidden ml-24 relative left-8'>
-         <div className='h-34 w-28 flex-shrink-0 overflow-hidden rounded-md'>
+         <div className='h-32 w-32 flex-shrink-0 overflow-hidden rounded-md'>
             <img src="https://slimages.macysassets.com/is/image/MCY/products/4/optimized/9124894_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." 
             className='object-cover object-center' />
           </div>
@@ -108,7 +108,7 @@ export default function SellingProducts() {
           </div>
        </div>
        <div className=' flex w-full h-full overflow-hidden ml-24 relative left-8'>
-         <div className='h-34 w-28 flex-shrink-0 overflow-hidden rounded-md'>
+         <div className='h-32 w-32 flex-shrink-0 overflow-hidden rounded-md'>
             <img src="https://slimages.macysassets.com/is/image/MCY/products/1/optimized/26656021_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." 
             className='object-cover object-center' />
           </div>
@@ -126,7 +126,7 @@ export default function SellingProducts() {
           </div>
        </div>
        <div className=' flex w-full h-full overflow-hidden ml-24 relative left-8'>
-         <div className='h-34 w-28 flex-shrink-0 overflow-hidden rounded-md'>
+         <div className='h-32 w-32 flex-shrink-0 overflow-hidden rounded-md'>
             <img src="https://slimages.macysassets.com/is/image/MCY/products/5/optimized/26421375_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." 
             className='object-cover object-center' />
           </div>
@@ -144,7 +144,7 @@ export default function SellingProducts() {
           </div>
        </div>
        <div className=' flex w-full h-full overflow-hidden ml-24 relative left-8'>
-         <div className='h-34 w-28 flex-shrink-0 overflow-hidden rounded-md'>
+         <div className='h-32 w-32 flex-shrink-0 overflow-hidden rounded-md'>
             <img src="https://slimages.macysassets.com/is/image/MCY/products/7/optimized/9934027_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." 
             className='object-cover object-center' />
           </div>
@@ -162,7 +162,7 @@ export default function SellingProducts() {
           </div>
        </div>
        <div className=' flex w-full h-full overflow-hidden ml-24 relative left-8'>
-         <div className='h-34 w-28 flex-shrink-0 overflow-hidden rounded-md'>
+         <div className='h-32 w-32 flex-shrink-0 overflow-hidden rounded-md'>
             <img src="https://slimages.macysassets.com/is/image/MCY/products/8/optimized/2992088_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp" alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." 
             className='object-cover object-center' />
           </div>

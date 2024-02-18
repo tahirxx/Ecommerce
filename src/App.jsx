@@ -1,13 +1,23 @@
+import React, { useState } from 'react'
+
 import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Product from './components/Product'
 import Carousel from './components/Carousel'
 import SellingProducts from './components/SellingProducts'
-import { Disclosure } from '@headlessui/react'
 import Discount from './components/Discount'
+import ProductGrid from './components/ProductGrid.jsx'
+import Footer from './components/Footer'
+import LoginRegisterPopup from './components/LoginRegisterPopup.jsx'
 
-function App() {
+export default function App() {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+
     return (
     
       <div>
@@ -17,8 +27,9 @@ function App() {
         <Carousel />
         <SellingProducts />
         <Discount />
+        <ProductGrid /> 
+        <Footer />
+        {showPopup && <LoginRegisterPopup onClose={togglePopup} />}
       </div>
   )
 }
-
-export default App
