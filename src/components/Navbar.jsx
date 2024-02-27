@@ -67,12 +67,12 @@ export default function Navbar() {
                     </a>
                   </li>
                   <li>
-                    <a href="" className="block py-2 pl-3 pr-4 text-black hover:border-b-2 border-[#7d0d0d] lg:p-0 uppercase">
+                    <a href="#" className="block py-2 pl-3 pr-4 text-black hover:border-b-2 border-[#7d0d0d] lg:p-0 uppercase">
                       Blog
                     </a>
                   </li>
                   <li>
-                    <a href="" className="block py-2 pl-3 pr-4 text-black hover:border-b-2 border-[#7d0d0d] lg:p-0 uppercase">
+                    <a href="#" className="block py-2 pl-3 pr-4 text-black hover:border-b-2 border-[#7d0d0d] lg:p-0 uppercase">
                       Contact
                     </a>
                   </li>

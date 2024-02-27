@@ -5,14 +5,23 @@ export default function KidsClothes() {
 
     useEffect(() => {
       const options = {
+
         method: 'GET',
+        params: {
+          country: 'us',
+          lang: 'en',
+          currentpage: '0',
+          pagesize: '30',
+          categories: 'ladies',
+          concepts: 'H&M MAN'
+        },
         headers: {
           'X-RapidAPI-Key': '4c7ee56424msh9a906c14ce22bc4p1b8f4cjsnf67d3e25d752',
           'X-RapidAPI-Host': 'apidojo-hm-hennes-mauritz-v1.p.rapidapi.com'
         }
       };
   
-      fetch('https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?categories=KIDS', options)
+      fetch('https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list', options)
         .then(response => response.json())
         .then(data => {
           const productDetails = data.results.map(item => ({
