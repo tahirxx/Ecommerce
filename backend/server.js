@@ -1,14 +1,15 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import User from './models/User';
+import User from './models/User.js';
+
+
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
 mongoose.connect("mongodb://localhost:27017");
-
 
 app.get('/register', (req, res) => {
     // You can send a response, render a page, or handle the request in any way you want
@@ -20,12 +21,12 @@ app.post('/login', async (req, res) => {
     const{email, password} = req.body
 
     try {
-        const check=await RealEstate.findOne({ email })
+        const check=await User.findOne({ email })
 
         if(check){
             res.json('exist')
         } else{
-            const newUser = new RealEstate({
+            const newUser = new User({
                 email,
                 password
             });
@@ -49,35 +50,19 @@ app.post('/register', async (req, res) => {
     }
 
     try {
-        const check=await RealEstate.findOne({email:email})
+        const check=await User.findOne({email:email})
 
         if(check){
             res.json('exist')
         } else{
             res.json('notexist')
-            await RealEstate.insertMany([data])
+            await User.insertMany([data])
         }
     } catch (err){
         res.json('notexist')
     }
 })
 
-//Contact message post/send
-app.post('/contact', async (req, res) => {
-    try {
-      const { fullname, email, message } = req.body;
-  
-      // Insert the message into MongoDB
-      const newMessage = new Contact({ fullname, email, message });
-      await newMessage.save();
-  
-      res.status(200).send('Message received. We will get back to you soon.');
-    } catch (error) {
-      console.error('Error:', error);
-      res.status(500).send('Internal Server Error');
-    }
-  });
-  
 app.listen(8000, () => {
     console.log("server is running")
 })

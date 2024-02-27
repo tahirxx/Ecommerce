@@ -1,35 +1,57 @@
-import React, { useState } from 'react'
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Product from './components/Product'
-import Carousel from './components/Carousel'
-import SellingProducts from './components/SellingProducts'
-import Discount from './components/Discount'
-import ProductGrid from './components/ProductGrid.jsx'
-import Footer from './components/Footer'
-import LoginRegisterPopup from './components/LoginRegisterPopup.jsx'
+import Login from './components/Login.jsx'
+import Register from './components/Register.jsx'
+import Home from './components/Home.jsx';
+import KidsClothes from './components/WomenClothes.jsx'
+import MenClothes from './components/MenClothes.jsx'
+import WomenClothes from './components/WomenClothes.jsx'
+
+function Men() {
+  return (
+    <div>
+      <h1>Men Section</h1>
+      <MenClothes />
+    </div>
+  );
+}
+
+function Women() {
+  return (
+  <div>
+      <h1>Women Section</h1>
+      <WomenClothes />
+  </div>
+  );
+}
+
+function Kids() {
+  return (
+  <div>
+      <h1>Kids Section</h1>
+      <KidsClothes />
+  </div>
+  );
+}
 
 export default function App() {
-  const [showPopup, setShowPopup] = useState(false);
-
-  const togglePopup = () => {
-    setShowPopup(!showPopup);
-  };
-
+  
     return (
-    
+    <Router>
       <div>
         <Navbar />
-        <Hero />
-        <Product />
-        <Carousel />
-        <SellingProducts />
-        <Discount />
-        <ProductGrid /> 
-        <Footer />
-        {showPopup && <LoginRegisterPopup onClose={togglePopup} />}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/mens" element={<Men />} />
+            <Route path="/womens" element={<Women />} />
+            <Route path="/kids" element={<Kids />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        
       </div>
+      </Router>
   )
 }
