@@ -24,6 +24,7 @@ export default function KidsClothes() {
       fetch('https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list', options)
         .then(response => response.json())
         .then(data => {
+       console.log(data);
           const productDetails = data.results.map(item => ({
             name: item.name,
             // price: item.price.map(price => price.value),
@@ -54,8 +55,10 @@ export default function KidsClothes() {
            
             ))}
           </div> 
+          <button>Add to Cart</button>
           </div>
         ))}
+       
       </div>
     );
   }

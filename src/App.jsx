@@ -8,6 +8,7 @@ import Home from './components/Home.jsx';
 import KidsClothes from './components/WomenClothes.jsx'
 import MenClothes from './components/MenClothes.jsx'
 import WomenClothes from './components/WomenClothes.jsx'
+import Cart from './components/Cart.jsx';
 
 function Men() {
   return (
@@ -49,6 +50,7 @@ export default function App() {
             <Route path="/kids" element={<Kids />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/cart" element={<Cart />}/>
           </Routes>
         
       </div>

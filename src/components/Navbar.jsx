@@ -37,7 +37,7 @@ export default function Navbar() {
                       <FaRegHeart />
                     </a>
                     <a 
-                    href=""
+                    href="/cart"
                     className="text-gray-800 hover:text-gray-600 rounded-lg text-sm px-4 py-2 lg:mr-0"
                     >
                       <MdOutlineShoppingBag />
