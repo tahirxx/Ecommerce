@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 const products = [
   {
     id: 1,
@@ -46,96 +46,123 @@ const products = [
 ]
 
 export default function Cart() {
- 
+  const [cartItems, setCartItems] = useState(products);
 
-return (
-    <div className="bg-white">
-    <div className="grid grid-cols-2 mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-     
-        
-      <div className="mt-6 w-80  gap-x-6 gap-y-10 ">
-        <h1 className='text-3xl'>Shopping Cart</h1>
-        {products.map((product) => (
-          <div key={product.id} className="group relative">
-            <div className="overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+  // Function to add a product to the cart
+  const addToCart = (productId) => {
+    const updatedCart = cartItems.map(item =>
+      item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+    );
+    setCartItems(updatedCart);
+  };
+
+  // Function to remove a product from the cart
+  const removeFromCart = (productId) => {
+    const updatedCart = cartItems.filter(item => item.id !== productId);
+    setCartItems(updatedCart);
+  };
+
+  // Function to update the quantity of a product in the cart
+  const updateQuantity = (productId, newQuantity) => {
+    const updatedCart = cartItems.map(item =>
+      item.id === productId ? { ...item, quantity: newQuantity } : item
+    );
+    setCartItems(updatedCart);
+  };
+
+  // Function to calculate the total price of items in the cart
+  const calculateTotalPrice = () => {
+    return cartItems.reduce((total, item) => {
+      return total + parseFloat(item.price.slice(1)) * item.quantity;
+    }, 0).toFixed(2);
+  };
+
+  // Function to clear the cart
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
+  // Function to add a new item to the cart
+  const addCartItem = (newItem) => {
+    setCartItems([...cartItems, newItem]);
+  };
+
+  return (
+    <div className="bg-white flex flex-col justify-center items-center text-center h-full">
+      {/* Cart content */}
+      {cartItems.map((product) => (
+        <div key={product.id} className="mb-8 ">
+           <div className="flex justify-center text-center ">
+           <div className="w-100 overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
               <img
                 src={product.imageSrc}
                 alt={product.imageAlt}
                 className="h-100 w-100 object-cover object-center lg:h-full lg:w-full"
               />
             </div>
-            <div className="mt-4 flex justify-between">
-              <div>
-                <h3 className="text-sm text-gray-700">
-                  <a href={product.href}>
-                    <span aria-hidden="true" className="absolute inset-0" />
-                    {product.name}
-                  </a>
-                </h3>
-                <p className="mt-1 text-sm text-gray-500">{product.color}</p>
-              </div>
-              <p className="text-sm font-medium text-gray-900 bg-orange-200 rounded-md w-20 text-center ">{product.price}</p>
+
+          <div className="flex flex-col justify-center items-center">
+            <h3>
+                <a href={product.href}>{product.name}</a>
+            </h3> 
+            <p className="mt-1 text-sm text-gray-500 ">{product.color}</p>
+            <p className="text-gray-500 ">
+              Qty{' '}
+              <input
+                type="number"
+                min="1"
+                value={product.quantity}
+                onChange={(e) => updateQuantity(product.id, parseInt(e.target.value))}
+              />
+            </p>
+           
+          </div>
+          <div className="flex flex-col justify-center items-center text-left text-m mt-2 ml-36">
+            <div>
+              <div className="flex justify-between text-base font-medium text-gray-900">
+              
+              <p>{product.price}</p>
+            </div>
+              <button
+                type="button"
+                className="font-medium text-indigo-600 hover:text-indigo-500"
+                onClick={() => removeFromCart(product.id)}
+              >
+                Remove
+              </button>
+              
             </div>
           </div>
-        ))}
-      </div>
-      <div className="mt-24">
-  {products.map((product) => (
-    <div key={product.id} className="mb-8">
-      <div>
+        </div></div>
+      ))}
+      <div className="border-t w-1/2 border-gray-200 px-4 py-6 sm:px-6">
         <div className="flex justify-between text-base font-medium text-gray-900">
-          <h3>
-            <a href={product.href}>{product.name}</a>
-          </h3>
-          <p>{product.price}</p>
+          <p>Subtotal</p>
+          <p>${calculateTotalPrice()}</p>
         </div>
-        <p className="mt-1 text-sm text-gray-500">{product.color}</p>
-      </div>
-      <div className="flex justify-between text-sm mt-2">
-        <p className="text-gray-500">Qty {product.quantity}</p>
-        <div>
-          <button
-            type="button"
-            className="font-medium text-indigo-600 hover:text-indigo-500"
+        <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+        <div className="mt-6">
+          <a
+            href="#"
+            className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
           >
-            Remove
-          </button>
+            Checkout
+          </a>
+        </div>
+        <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+          <p>
+            or{' '}
+            <button
+              type="button"
+              className="font-medium text-indigo-600 hover:text-indigo-500"
+              onClick={clearCart}
+            >
+              Continue Shopping
+              <span aria-hidden="true"> &rarr;</span>
+            </button>
+          </p>
         </div>
       </div>
     </div>
-  ))}
-  <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-    <div className="flex justify-between text-base font-medium text-gray-900">
-      <p>Subtotal</p>
-      <p>$262.00</p> {/* Replace with actual subtotal */}
-    </div>
-    <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
-    <div className="mt-6">
-      <a
-        href="#"
-        className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-      >
-        Checkout
-      </a>
-    </div>
-    <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-      <p>
-        or{' '}
-        <button
-          type="button"
-          className="font-medium text-indigo-600 hover:text-indigo-500"
-        >
-          Continue Shopping
-          <span aria-hidden="true"> &rarr;</span>
-        </button>
-      </p>
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
-)
-        }
-
-
-
+  );
+}
