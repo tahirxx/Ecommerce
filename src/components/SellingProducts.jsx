@@ -32,6 +32,7 @@ export default function SellingProducts() {
                 <p className='ml-4'>$90.00</p>
               </div>
               <p className='mt-1 text-sm text-gray-500'>Salmon</p>
+              
             </div>
           </div>
        </div>

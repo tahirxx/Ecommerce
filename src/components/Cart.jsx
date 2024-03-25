@@ -1,60 +1,7 @@
-import { useState } from "react";
-const products = [
-  {
-    id: 1,
-    name: 'Throwback Hip Bag',
-    href: '#',
-    color: 'Salmon',
-    price: '$90.00',
-    quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-    imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
-  },
-  {
-    id: 2,
-    name: 'Medium Stuff Satchel',
-    href: '#',
-    color: 'Blue',
-    price: '$32.00',
-    quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-    imageAlt:
-      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-  },
-  {
-    id: 3,
-    name: 'Throwback Hip Bag',
-    href: '#',
-    color: 'Salmon',
-    price: '$66.00',
-    quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-    imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
-  },
-  {
-    id: 4,
-    name: 'Medium Stuff Satchel',
-    href: '#',
-    color: 'Blue',
-    price: '$78.00',
-    quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-    imageAlt:
-      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-  },
-  // More products...
-]
+import PropTypes from 'prop-types';
 
-export default function Cart() {
-  const [cartItems, setCartItems] = useState(products);
-
-  // Function to add a product to the cart
-  const addToCart = (productId) => {
-    const updatedCart = cartItems.map(item =>
-      item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
-    );
-    setCartItems(updatedCart);
-  };
+export default function Cart({ cartItems, setCartItems }) {
+ 
 
   // Function to remove a product from the cart
   const removeFromCart = (productId) => {
@@ -73,7 +20,15 @@ export default function Cart() {
   // Function to calculate the total price of items in the cart
   const calculateTotalPrice = () => {
     return cartItems.reduce((total, item) => {
-      return total + parseFloat(item.price.slice(1)) * item.quantity;
+      // Convert price to a number, assuming it's a string
+      const numericPrice = parseFloat(item.price);
+      // Check if numericPrice is a valid number
+      if (!isNaN(numericPrice)) {
+        return total + numericPrice * item.quantity;
+      } else {
+        console.error(`Invalid price found for item: ${item.name}`);
+        return total;
+      }
     }, 0).toFixed(2);
   };
 
@@ -82,13 +37,15 @@ export default function Cart() {
     setCartItems([]);
   };
 
-  // Function to add a new item to the cart
-  const addCartItem = (newItem) => {
-    setCartItems([...cartItems, newItem]);
-  };
+ if (cartItems.length === 0) {
+    return  <p className="text-blue-700 text-2xl text-center">Your cart is empty.</p>
+      }
 
   return (
+
+
     <div className="bg-white flex flex-col justify-center items-center text-center h-full">
+     
       {/* Cart content */}
       {cartItems.map((product) => (
         <div key={product.id} className="mb-8 ">
@@ -97,7 +54,7 @@ export default function Cart() {
               <img
                 src={product.imageSrc}
                 alt={product.imageAlt}
-                className="h-100 w-100 object-cover object-center lg:h-full lg:w-full"
+                className="h-70 w-100 object-cover object-center lg:h-full lg:w-full"
               />
             </div>
 
@@ -121,7 +78,7 @@ export default function Cart() {
             <div>
               <div className="flex justify-between text-base font-medium text-gray-900">
               
-              <p>{product.price}</p>
+              <p>${product.price}</p>
             </div>
               <button
                 type="button"
@@ -163,6 +120,24 @@ export default function Cart() {
           </p>
         </div>
       </div>
+    
+
     </div>
   );
 }
+
+Cart.propTypes = {
+ 
+  cartItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      price: PropTypes.string,
+      quantity: PropTypes.number,
+      // Add more specific PropTypes for other properties if needed
+    })
+  ),
+  setCartItems: PropTypes.func, // Assuming setCartItems is a function
+};
+
+ 

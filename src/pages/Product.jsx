@@ -1,6 +1,14 @@
 import { FaStar } from "react-icons/fa";
+import PropTypes from 'prop-types';
+import Cart from './components/Cart.jsx'
+export default function Product({cartItems, setCartItems, addToCart}) {
+  
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    setCartItems([...cartItems,product])
+    console.log(setCartItems)
+  };
 
-export default function Product() {
   const products = [
     {
       id: 1,
@@ -8,7 +16,7 @@ export default function Product() {
       href: "#",
       imageSrc: "https://slimages.macysassets.com/is/image/MCY/products/0/optimized/26222430_fpx.tif?op_sharpen=1&wid=500&hei=611&fit=fit,1&fmt=webp",
       imageAlt: "Front of men's Basic Tee in black.",
-      price: "$35",
+      price: 35,
       color: "Black",
     },
     {
@@ -17,7 +25,7 @@ export default function Product() {
       href: "#",
       imageSrc: "https://slimages.macysassets.com/is/image/MCY/products/1/optimized/24716881_fpx.tif?op_sharpen=1&wid=500&hei=611&fit=fit,1&fmt=webp",
       imageAlt: "Front of men's Striped Tee in white.",
-      price: "$45",
+      price: 45,
       color: "White",
     },
     {
@@ -26,7 +34,7 @@ export default function Product() {
       href: "#",
       imageSrc: "https://slimages.macysassets.com/is/image/MCY/products/1/optimized/25351751_fpx.tif?op_sharpen=1&wid=500&hei=611&fit=fit,1&fmt=webp",
       imageAlt: "Front of men's Crewneck Sweatshirt in grey.",
-      price: "$65",
+      price: 65,
       color: "Grey",
     },
     {
@@ -35,7 +43,7 @@ export default function Product() {
       href: "#",
       imageSrc: "https://slimages.macysassets.com/is/image/MCY/products/6/optimized/15848876_fpx.tif?op_sharpen=1&wid=500&hei=611&fit=fit,1&fmt=webp",
       imageAlt: "Front of men's Slim Fit Jeans in blue.",
-      price: "$75",
+      price: 75,
       color: "Blue",
     },
     {
@@ -44,7 +52,7 @@ export default function Product() {
       href: "#",
       imageSrc: "https://slimages.macysassets.com/is/image/MCY/products/7/optimized/25120707_fpx.tif?op_sharpen=1&wid=500&hei=611&fit=fit,1&fmt=webp",
       imageAlt: "Front of men's Slim Fit Chinos in dark gray.",
-      price: "$65",
+      price: 65,
       color: "Tan",
     },
     {
@@ -53,7 +61,7 @@ export default function Product() {
       href: "#",
       imageSrc: "https://slimages.macysassets.com/is/image/MCY/products/8/optimized/26245988_fpx.tif?op_sharpen=1&wid=500&hei=611&fit=fit,1&fmt=webp",
       imageAlt: "Front of Women's V-Neck Sweater in grey.",
-      price: "$95",
+      price: 95,
       color: "Grey",
     },
     {
@@ -62,7 +70,7 @@ export default function Product() {
       href: "#",
       imageSrc: "https://slimages.macysassets.com/is/image/MCY/products/9/optimized/26058689_fpx.tif?op_sharpen=1&wid=500&hei=611&fit=fit,1&fmt=webp",
       imageAlt: "Front of men's Bomber Jacket in green.",
-      price: "$135",
+      price: 135,
       color: "Green",
     },
     {
@@ -71,11 +79,12 @@ export default function Product() {
       href: "#",
       imageSrc: "https://slimages.macysassets.com/is/image/MCY/products/3/optimized/26131353_fpx.tif?op_sharpen=1&wid=500&hei=611&fit=fit,1&fmt=webp",
       imageAlt: "Front of men's Hooded Sweatshirt in black.",
-      price: "$85",
+      price: 85,
       color: "Black",
     },
   ];
 
+ 
   return (
     <div className='bg-white'>
       <div className='mx-auto max-w-2xl px-4 py-16 sm:px-24 lg:max-w-7xl lg:px-8'>
@@ -90,37 +99,37 @@ export default function Product() {
             <ul className="flex flex-col mt-4 lg:flex-row lg:space-x-8 lg:mt-0">
               <li>
                 <a href="#"
-                className="block py-2 pl-3 pr-4 text-black borer-b-2 border-[#7d0d0d] lg:p-0 uppercase text-sm">
+                  className="block py-2 pl-3 pr-4 text-black borer-b-2 border-[#7d0d0d] lg:p-0 uppercase text-sm">
                   All
                 </a>
               </li>
               <li>
-                <a href="#"
-                className="block py-2 pl-3 pr-4 text-black borer-b-2 border-[#7d0d0d] lg:p-0 uppercase text-sm">
+                <a href="/womens"
+                  className="block py-2 pl-3 pr-4 text-black borer-b-2 border-[#7d0d0d] lg:p-0 uppercase text-sm">
                   Womens
                 </a>
               </li>
               <li>
-                <a href="#"
-                className="block py-2 pl-3 pr-4 text-black borer-b-2 border-[#7d0d0d] lg:p-0 uppercase text-sm">
+                <a href="/mens"
+                  className="block py-2 pl-3 pr-4 text-black borer-b-2 border-[#7d0d0d] lg:p-0 uppercase text-sm">
                   Mens
                 </a>
               </li>
               <li>
-                <a href="#"
-                className="block py-2 pl-3 pr-4 text-black borer-b-2 border-[#7d0d0d] lg:p-0 uppercase text-sm">
+                <a href="/kids"
+                  className="block py-2 pl-3 pr-4 text-black borer-b-2 border-[#7d0d0d] lg:p-0 uppercase text-sm">
                   Kids
                 </a>
               </li>
               <li>
                 <a href="#"
-                className="block py-2 pl-3 pr-4 text-black borer-b-2 border-[#7d0d0d] lg:p-0 uppercase text-sm">
+                  className="block py-2 pl-3 pr-4 text-black borer-b-2 border-[#7d0d0d] lg:p-0 uppercase text-sm">
                   Accessories
                 </a>
               </li>
               <li>
                 <a href="#"
-                className="block py-2 pl-3 pr-4 text-black borer-b-2 border-[#7d0d0d] lg:p-0 uppercase text-sm">
+                  className="block py-2 pl-3 pr-4 text-black borer-b-2 border-[#7d0d0d] lg:p-0 uppercase text-sm">
                   Cosmetics
                 </a>
               </li>
@@ -131,9 +140,9 @@ export default function Product() {
           {products.map((product) => (
             <div key={product.id} className="group relative">
               <div className="w-full overflow-hidden bg-gray-200 group-hover:opacity-75">
-                <img src={product.imageSrc} alt={product.imageAlt} 
-                className="h-full w-full object-cover object-center lg:h-full  lg:w-full"/>
-              </div> 
+                <img src={product.imageSrc} alt={product.imageAlt}
+                  className="h-full w-full object-cover object-center lg:h-full  lg:w-full" />
+              </div>
 
               <div className="mt-4 flex flex-col justify-center items-center">
                 <div >
@@ -141,21 +150,41 @@ export default function Product() {
                     <a href={product.href}>{product.name}</a>
                   </h3>
                   <div className="mt-1 text-sm text-gray-500 flex">
-                    <FaStar color="#e3c01c"/>
-                    <FaStar color="#e3c01c"/>
-                    <FaStar color="#e3c01c"/>
-                    <FaStar color="#e3c01c"/>
-                    <FaStar color="#e3c01c"/>
+                    <FaStar color="#e3c01c" />
+                    <FaStar color="#e3c01c" />
+                    <FaStar color="#e3c01c" />
+                    <FaStar color="#e3c01c" />
+                    <FaStar color="#e3c01c" />
                   </div>
                 </div>
                 <p className="text-sm font-medium text-gray-900">
-                  {product.price}
+                  ${product.price}
                 </p>
+                <div>
+                  <button className="bg-yellow-200 w-32 rounded-lg hover:bg-gray-300" onClick={() => handleAddToCart(product)}>
+                    Add to Cart
+                  </button>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </div>
+     <Cart cartItems={cartItems} setCartItems={setCartItems} />
     </div>
   )
 }
+
+Product.propTypes = {
+  addToCart: PropTypes.func,
+  cartItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      price: PropTypes.number, // Assuming price is a number
+      quantity: PropTypes.number,
+      // Add more specific PropTypes for other properties if needed
+    })
+  ),
+  setCartItems: PropTypes.func, // Assuming setCartItems is a function
+};

@@ -1,14 +1,13 @@
-
+import PropTypes from 'prop-types';
 import { MdOutlineSearch } from "react-icons/md";
-import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineShoppingBag } from "react-icons/md";
 
-export default function Navbar() {
+export default function Navbar({ size }) {
   return (
     <>
       <header className='bg-white flex-wrap items-center shadow-md'>
         <nav className='border-grap-200 bh-white py-6'>
-            <div className='flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto'>
+            <div className='flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto' >
                 <a href="/" className='flex items-center'>
                     <span className='self-center text-[1.8rem] font-semibold whitespace-nowrap text-black font-[lobster]' >
                     LuxeLane
@@ -30,17 +29,14 @@ export default function Navbar() {
                     >
                       <MdOutlineSearch />
                     </a>
-                    <a 
-                    href=""
-                    className="text-gray-800 hover:text-gray-600 rounded-lg text-sm px-4 py-2 lg:mr-0"
-                    >
-                      <FaRegHeart />
-                    </a>
+                  
                     <a 
                     href="/cart"
                     className="text-gray-800 hover:text-gray-600 rounded-lg text-sm px-4 py-2 lg:mr-0"
+                    
                     >
                       <MdOutlineShoppingBag />
+                      <span>{size}</span>
                     </a>
                 </div>
               <div className="items-center justify-between w-full lg:flex lg:w-auto lg:order:1">
@@ -86,3 +82,8 @@ export default function Navbar() {
     </>
   )
 }
+
+Navbar.propTypes = {
+
+  size: PropTypes.arrayOf,
+};
