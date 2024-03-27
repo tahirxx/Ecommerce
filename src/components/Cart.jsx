@@ -121,7 +121,6 @@ export default function Cart({ cartItems, setCartItems }) {
         </div>
       </div>
     
-
     </div>
   );
 }
@@ -132,7 +131,7 @@ Cart.propTypes = {
     PropTypes.shape({
       id: PropTypes.number,
       name: PropTypes.string,
-      price: PropTypes.string,
+      price: PropTypes.number,
       quantity: PropTypes.number,
       // Add more specific PropTypes for other properties if needed
     })

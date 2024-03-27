@@ -84,6 +84,5 @@ export default function Navbar({ size }) {
 }
 
 Navbar.propTypes = {
-
-  size: PropTypes.arrayOf,
+  size: PropTypes.arrayOf(PropTypes.number),
 };

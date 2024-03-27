@@ -9,8 +9,8 @@ import KidsClothes from './components/WomenClothes.jsx'
 import MenClothes from './components/MenClothes.jsx'
 import WomenClothes from './components/WomenClothes.jsx'
 
-import { useState } from "react";
-import Cart from './components/Cart.jsx';
+import { useState, useEffect } from "react";
+import CartPage from './pages/CartPage.jsx';
 import Product from './pages/Product.jsx'
 
 
@@ -43,15 +43,17 @@ function Kids() {
 
 export default function App() {
  
-  const [cartItems, setCartItems] = useState([]);
- 
-  const addToCart = (product) => {
+  const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems')) || []
+  );
 
-      console.log(product)
-    
+  // Update localStorage whenever cartItems changes
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  const addToCart = (product) => {
     const productIndex = cartItems.findIndex(item => item.id === product.id);
-     
-    if (productIndex !== -1) {
+         if (productIndex !== -1) {
     
       const updatedCartItems = [...cartItems];
       updatedCartItems[productIndex].quantity += 1;
@@ -59,10 +61,11 @@ export default function App() {
     } else {
      
       setCartItems([...cartItems, product]);
-     console.log(cartItems)
+     console.log(cartItems);
+    
     }
 
- 
+    
   }
     return (
     <Router>
@@ -75,7 +78,7 @@ export default function App() {
             <Route path="/kids" element={<Kids />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/cart" element={<Cart setCartItems={setCartItems} cartItems={cartItems} />}/> 
+            <Route path="/cart" element={<CartPage setCartItems={setCartItems} cartItems={cartItems} />}/> 
           </Routes>
         
       </div>

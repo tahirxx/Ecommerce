@@ -1,12 +1,12 @@
 import { FaStar } from "react-icons/fa";
 import PropTypes from 'prop-types';
-import Cart from './components/Cart.jsx'
+
+
 export default function Product({cartItems, setCartItems, addToCart}) {
   
   const handleAddToCart = (product) => {
     addToCart(product);
-    setCartItems([...cartItems,product])
-    console.log(setCartItems)
+    localStorage.setItem('cartItems', JSON.stringify([...cartItems, product]));
   };
 
   const products = [
@@ -170,7 +170,7 @@ export default function Product({cartItems, setCartItems, addToCart}) {
           ))}
         </div>
       </div>
-     <Cart cartItems={cartItems} setCartItems={setCartItems} />
+
     </div>
   )
 }
