@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export default function CartPage({cartItems, setCartItems}) {
   return (
     <div>
-      <h1>Cart Page to Display Cart Items</h1>
+      <h1 className='text-2xl text-center pb-10 pt-10'>Shopping Cart</h1>
       <Cart setCartItems={setCartItems} cartItems={cartItems} />
       
     </div>

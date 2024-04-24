@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 export default function Cart({ cartItems, setCartItems }) {
  
 
-  // Function to remove a product from the cart
-  const removeFromCart = (productId) => {
-    const updatedCart = cartItems.filter(item => item.id !== productId);
+  // Function to remove a item from the cart
+  const removeFromCart = (itemId) => {
+    const updatedCart = cartItems.filter(item => item.id !== itemId);
     setCartItems(updatedCart);
   };
 
-  // Function to update the quantity of a product in the cart
-  const updateQuantity = (productId, newQuantity) => {
+  // Function to update the quantity of a item in the cart
+  const updateQuantity = (itemId, newQuantity) => {
     const updatedCart = cartItems.map(item =>
-      item.id === productId ? { ...item, quantity: newQuantity } : item
+      item.id === itemId ? { ...item, quantity: newQuantity } : item
     );
     setCartItems(updatedCart);
   };
@@ -20,17 +20,10 @@ export default function Cart({ cartItems, setCartItems }) {
   // Function to calculate the total price of items in the cart
   const calculateTotalPrice = () => {
     return cartItems.reduce((total, item) => {
-      // Convert price to a number, assuming it's a string
-      const numericPrice = parseFloat(item.price);
-      // Check if numericPrice is a valid number
-      if (!isNaN(numericPrice)) {
-        return total + numericPrice * item.quantity;
-      } else {
-        console.error(`Invalid price found for item: ${item.name}`);
-        return total;
-      }
+      return total + (parseFloat(item.price) * item.quantity);
     }, 0).toFixed(2);
   };
+  
 
   // Function to clear the cart
   const clearCart = () => {
@@ -47,29 +40,29 @@ export default function Cart({ cartItems, setCartItems }) {
     <div className="bg-white flex flex-col justify-center items-center text-center h-full">
      
       {/* Cart content */}
-      {cartItems.map((product) => (
-        <div key={product.id} className="mb-8 ">
+      {cartItems.map((item) => (
+        <div key={item.id} className="mb-8 ">
            <div className="flex justify-center text-center ">
            <div className="w-100 overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
               <img
-                src={product.imageSrc}
-                alt={product.imageAlt}
-                className="h-70 w-100 object-cover object-center lg:h-full lg:w-full"
+                src={item.imageSrc}
+                alt={item.imageAlt}
+                className=" w-100 object-cover object-center lg:h-full lg:w-full"
               />
             </div>
 
           <div className="flex flex-col justify-center items-center">
             <h3>
-                <a href={product.href}>{product.name}</a>
+                <a href={item.href}>{item.name}</a>
             </h3> 
-            <p className="mt-1 text-sm text-gray-500 ">{product.color}</p>
+            <p className="mt-1 text-sm text-gray-500 ">{item.color}</p>
             <p className="text-gray-500 ">
               Qty{' '}
               <input
                 type="number"
                 min="1"
-                value={product.quantity}
-                onChange={(e) => updateQuantity(product.id, parseInt(e.target.value))}
+                value={item.quantity || 1} // Ensure a default value of 1 if quantity is null or undefined
+                onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
               />
             </p>
            
@@ -78,12 +71,12 @@ export default function Cart({ cartItems, setCartItems }) {
             <div>
               <div className="flex justify-between text-base font-medium text-gray-900">
               
-              <p>${product.price}</p>
+              <p>${item.price}</p>
             </div>
               <button
                 type="button"
                 className="font-medium text-indigo-600 hover:text-indigo-500"
-                onClick={() => removeFromCart(product.id)}
+                onClick={() => removeFromCart(item.id)}
               >
                 Remove
               </button>

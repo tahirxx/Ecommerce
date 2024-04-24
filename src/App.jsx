@@ -43,6 +43,7 @@ function Kids() {
 
 export default function App() {
  
+  const [warning, setWarning] = useState(false);
   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems')) || []
   );
 
@@ -54,13 +55,19 @@ export default function App() {
   const addToCart = (product) => {
     const productIndex = cartItems.findIndex(item => item.id === product.id);
          if (productIndex !== -1) {
-    
+          // If product already exists in cart, set warning
+      setWarning(true);
+      // Clear warning after 3 seconds
+      setTimeout(() => {
+        setWarning(false);
+      }, 2000);
+      
       const updatedCartItems = [...cartItems];
       updatedCartItems[productIndex].quantity += 1;
       setCartItems(updatedCartItems);
     } else {
      
-      setCartItems([...cartItems, product]);
+      setCartItems([...cartItems, { ...product, quantity: 1 }]);
      console.log(cartItems);
     
     }
@@ -70,7 +77,7 @@ export default function App() {
     return (
     <Router>
       <div>
-        <Navbar size={cartItems.length} />
+        <Navbar size={[cartItems.length]} />
           <Routes>
             <Route path="/" element={<Product addToCart={addToCart} setCartItems={setCartItems} cartItems={cartItems} />} />
             <Route path="/mens" element={<Men />} />
@@ -79,8 +86,11 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/cart" element={<CartPage setCartItems={setCartItems} cartItems={cartItems} />}/> 
+           
           </Routes>
-        
+         {
+              warning && <div className='warning'>Item is already added to your cart</div>
+            }
       </div>
       </Router>
   )
