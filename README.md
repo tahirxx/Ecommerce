@@ -18,7 +18,7 @@ LuxeLane is your gateway to stylish and affordable fashion! Our beginner-friendl
 
 Check out the live demo of LuxeLane:
 
-- [Preview on Netlify](#) <!-- Add your Netlify link here -->
+- [[Preview on Netlify](#) <!-- Add your Netlify link here -->](https://luxelaneshop.netlify.app)
 
 ---
 
